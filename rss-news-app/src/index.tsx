@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App.tsx"; // Ensure the path matches
+import App from "./App"; // Ensure the path matches
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
