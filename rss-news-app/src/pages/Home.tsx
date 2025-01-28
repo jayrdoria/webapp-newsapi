@@ -8,6 +8,8 @@ interface Article {
   title: string;
   url: string;
   imageUrl: string | null;
+  author: string;
+  publishedAt: string;
 }
 
 const Home: React.FC = () => {

@@ -4,6 +4,8 @@ interface NewsItem {
   title: string;
   url: string;
   imageUrl: string | null;
+  author: string;
+  publishedAt: string;
 }
 
 interface NewsListProps {
@@ -18,6 +20,7 @@ const NewsList: React.FC<NewsListProps> = ({ articles }) => {
           key={index}
           className="border rounded-lg p-4 shadow-md hover:shadow-lg"
         >
+          {/* Display Image */}
           {article.imageUrl && (
             <img
               src={article.imageUrl}
@@ -25,6 +28,8 @@ const NewsList: React.FC<NewsListProps> = ({ articles }) => {
               className="w-full h-40 object-cover rounded mb-4"
             />
           )}
+
+          {/* Display Title */}
           <a
             href={article.url}
             target="_blank"
@@ -33,6 +38,15 @@ const NewsList: React.FC<NewsListProps> = ({ articles }) => {
           >
             {article.title}
           </a>
+
+          {/* Display Author and Date */}
+          <p className="text-gray-500 mt-2 text-sm">
+            <span>By: {article.author}</span>
+            <br />
+            <span>
+              Published: {new Date(article.publishedAt).toLocaleDateString()}
+            </span>
+          </p>
         </div>
       ))}
     </div>
