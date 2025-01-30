@@ -18,8 +18,15 @@ const NewsList: React.FC<NewsListProps> = ({ articles }) => {
       {articles.map((article, index) => (
         <div
           key={index}
-          className="border rounded-lg p-4 shadow-md hover:shadow-lg"
+          className={`border rounded-lg p-4 shadow-md hover:shadow-lg ${
+            index === 0 ? "border-2 border-blue-500 bg-gray-100" : ""
+          }`}
         >
+          {/* Highlight the first card as the latest news */}
+          {index === 0 && (
+            <p className="text-sm font-bold text-red-500">Latest News</p>
+          )}
+
           {/* Display Image */}
           {article.imageUrl && (
             <img

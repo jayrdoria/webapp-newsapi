@@ -13,13 +13,19 @@ export const fetchNews = async (query: string) => {
       },
     });
 
-    return response.data.articles.map((article: any) => ({
-      title: article.title,
-      url: article.url,
-      imageUrl: article.urlToImage || null,
-      author: article.author || "Unknown Author",
-      publishedAt: article.publishedAt || "Unknown Date",
-    }));
+    // Define the Article type explicitly
+    return response.data.articles
+      .map((article: any) => ({
+        title: article.title,
+        url: article.url,
+        imageUrl: article.urlToImage || null,
+        author: article.author || "Unknown Author",
+        publishedAt: article.publishedAt || "Unknown Date",
+      }))
+      .sort(
+        (a: { publishedAt: string }, b: { publishedAt: string }) =>
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      );
   } catch (error) {
     console.error("Error fetching news:", error);
     return [];
